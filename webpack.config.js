@@ -3,7 +3,7 @@ const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
 
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
-    orgName: "showcase",
+    orgName: "zanza00",
     projectName: "intro",
     webpackConfigEnv,
     argv,
@@ -14,6 +14,5 @@ module.exports = (webpackConfigEnv, argv) => {
     devServer: {
       port: 8083,
     },
-    externals: ["@showcase/shared-libs"],
   });
 };

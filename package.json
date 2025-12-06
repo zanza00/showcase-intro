@@ -1,5 +1,13 @@
 {
-  "name": "@showcase/intro",
+  "name": "@zanza00/intro",
+  "repository": {
+    "url": "https://github.com/zanza00/showcase-intro"
+  },
+  "main": "dist/zanza00-intro.js",
+  "types": "dist/zanza00-intro.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "webpack serve",
     "start:standalone": "webpack serve --env standalone",
@@ -12,6 +20,7 @@
     "test": "cross-env BABEL_ENV=test jest",
     "watch-tests": "cross-env BABEL_ENV=test jest --watch",
     "prepare": "husky install",
+    "prepublishOnly": "npm run build",
     "coverage": "cross-env BABEL_ENV=test jest --coverage",
     "build:types": "tsc"
   },
@@ -30,6 +39,7 @@
     "@types/react-dom": "^19.2.3",
     "@types/systemjs": "^6.1.1",
     "@types/webpack-env": "^1.16.2",
+    "@zanza00/shared-libs": "^0.0.9",
     "babel-jest": "^27.5.1",
     "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
@@ -58,6 +68,5 @@
     "single-spa": "^6.0.3",
     "single-spa-react": "^6.0.2"
   },
-  "types": "dist/showcase-intro.d.ts",
   "version": "0.0.3"
 }
