@@ -12,16 +12,23 @@ module.exports = (webpackConfigEnv, argv) => {
     outputSystemJS: false,
   });
 
+  const certPath = path.resolve(__dirname, "certs/localhost.pem");
+  const keyPath = path.resolve(__dirname, "certs/localhost-key.pem");
+  
+  const httpsOptions = fs.existsSync(certPath) && fs.existsSync(keyPath)
+    ? {
+        type: "https",
+        options: {
+          key: fs.readFileSync(keyPath),
+          cert: fs.readFileSync(certPath),
+        },
+      }
+    : { type: "http" };
+
   return merge(defaultConfig, {
     devServer: {
       port: 8082,
-      server: {
-        // type: "https",
-        // options: {
-        //   key: fs.readFileSync(path.resolve(__dirname, "../.certs/localhost+2-key.pem")),
-        //   cert: fs.readFileSync(path.resolve(__dirname, "../.certs/localhost+2.pem")),
-        // },
-      },
+      server: httpsOptions,
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods":

@@ -9,6 +9,7 @@
     "dist"
   ],
   "scripts": {
+    "prestart": "node scripts/generate-certs.js",
     "start": "webpack serve",
     "start:standalone": "webpack serve --env standalone",
     "build": "concurrently npm:build:*",
